@@ -1,0 +1,77 @@
+-----------Balan Giorgiana-Lavinia----------------
+--------------321CB-------------------------------
+-----------------TEMA 2 PA------------------------
+
+
+		Problema 1:
+
+	Pentru rezolvarea primei probleme am creat o clasa Dist utila pentru 
+retinerea unui nod si a nivelului pe care trebuie sa se afle.
+
+	Initial, am sortat cescator dupa distanta vectorul in care am retinut 
+perechile (nod, distanta), pentru a putea mai usor sa construiesc graful 
+pe nivele.
+
+	Apoi, am verificat cele doua conditii pentru care nu pot construi 
+arborele, si anume: 
+- daca am mai  multe noduri marcate ca radacina(adica cu distanta 0)	
+
+- sau daca "lipseste" un anume nivel (deci daca exista noduri la care 
+nu pot ajunge)
+
+	Pentru crearea muchiilor, am gandit astfel: am retinut un current_nod
+care reprezinta nodul la care se leaga nodurile de pe nivelul curent si un aux
+care se plimba pe nodurile de pe nivelul curent. Astfel, la trecerea pe 
+urmatorul nivel (adica urmatoarea distanta), current_nod va fi aux(deci, 
+nodurile de pe urmatorul nivel le leg la ultimul nod de pe nivelul precedent) si 
+aux se va plimba prin nodurile de pe nivelul urmator.
+
+	Complexitate temporala: O(n * log n);
+	Complexitate spatiala: O(n); 
+
+
+
+
+		Problema 2:
+
+	Pentru rezolvarea acestei probleme, am creat o clasa Coordinates 
+reprezentativa pentru pozitia unui element din matricea data, prin campurile 
+x si y care specifica facptul ca elementul este pozitionat in matrice la 
+intersectia liniei x cu coloana y. 
+
+	In momentul construirii matricei initiale cu datele citite din fisierul 
+de input am adaugat pe marginea matricei -8, fiindu-mi util la verificarea 
+existentei vecinilor unui element.
+
+	Ideea rezolvarii problemei parcurge pasii urmatori:	
+
+- iau fiecare element din matrice
+
+- presupun ca este minimul din zona curenta
+
+- il marchez ca vizitat, adica va face parte din zona curenta pe care o construiesc
+
+- il adaug in coada
+
+- initializez aria maxima curenta cu 1(am un singur element)
+
+- cat timp mai sunt elemente in coada(adica exista posibilitatea ca 
+	zona curenta sa mai poata fi extinsa):
+
+	 => extrag cate unul
+	 => verific daca are vecini valizi(adica: nu au mai fost vizitati si 
+	 	adaugarea lor in zona nu va incalca conditia conform careia diferenta 
+	 	dintre maximul si minimul din zona sa fie cel mult k)
+	 => vecinii valizi sunt adaugati in coada(fac parte din zona) si 
+	 	ii marchez ca vizitati
+	 => la adaugarea fiecarui vecin valid incrementez aria maxima curenta
+
+- la finalul while-ului am aria maxima a zonelor gasite plecand de la elementul 
+curent din matrice. 
+
+- actualizez aria maxima globala daca este cazul
+
+
+
+	Complexitate temporala: O(n^2 * m);
+	Complexitate spatiala: O(n * m); 	 		
